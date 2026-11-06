@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111815">
+  <meta name="description" content="Практика попилов в спортивной мафии. Распределите голоса по учебной схеме и запустите голосование.">
+  <title>Попил — тренажёр голосования</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="./" aria-label="Попил — главная"><span class="brand-mark" aria-hidden="true">п<span>:</span></span><span>ПОПИЛ<span class="brand-sub">тренажёр голосования</span></span></a>
+    <div class="header-end"><span class="practice-label"><i></i> СПОРТИВНАЯ МАФИЯ</span></div>
+  </header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">ПРАКТИКА ЗА СТОЛОМ</p><p class="intro-copy">Соберите попил и проверьте свою схему голосования.</p></div></div>
+    <div class="workspace">
+      <aside class="settings card" aria-label="Настройки тренировки">
+        <button id="settings-toggle" class="mobile-settings-toggle" aria-expanded="false"><span>Настройки тренировки</span><strong id="mobile-format">2 при 10 <span aria-hidden="true">⌄</span></strong></button>
+        <h2>Ситуация</h2>
+        <div class="segmented"><button id="mode-single" class="active" aria-pressed="true">Выбрать</button><button id="mode-mixed" aria-pressed="false">Вперемешку <span aria-hidden="true">⤨</span></button></div>
+        <p id="format-help" class="field-help">Кандидаты / игроки за столом</p>
+        <div id="format-grid" class="format-grid" role="group" aria-label="Форматы попила"></div>
+        <label class="field-label" for="speed">Темп голосования</label>
+        <select id="speed"><option value="2200">Спокойный</option><option value="1500" selected>Обычный</option><option value="700">Быстрый</option></select>
+        <button id="new-round" class="secondary-button full"><span aria-hidden="true">↻</span> Новая ситуация</button>
+      </aside>
+      <section class="arena card" aria-label="Игровой стол">
+        <div class="arena-top"><div class="round-label"><h2 id="round-name">2 при 10</h2><span id="alive-label">10 игроков за столом</span></div><span id="phase-badge" class="badge">Распределение</span></div>
+        <div class="steps" aria-label="Ход упражнения"><span id="step-plan" class="active"><b>01</b> Схема</span><i></i><span id="step-vote"><b>02</b> Голосование</span><i></i><span id="step-review"><b>03</b> Разбор</span></div>
+        <div class="nomination"><span>Порядок голосования</span><div id="candidate-order"></div></div>
+        <details class="scheme-rule"><summary><span id="scheme-name"></span><span>Правило схемы <span aria-hidden="true">⌄</span></span></summary><p id="scheme-description"></p><a href="https://fluentnumbers.com/000_processed/mafgames/Попилы-при-игре-в-мафию" target="_blank" rel="noopener noreferrer">Схемы и примеры — Fluent Numbers ↗</a></details>
+        <div class="board" id="board">
+          <div class="felt"><div class="table-grain"></div><div class="felt-ring"></div></div>
+          <svg id="route" class="route" viewBox="0 0 600 460" aria-hidden="true"></svg>
+          <div id="seats"></div>
+          <div id="table-center" class="table-center"></div>
+        </div>
+        <div class="board-legend"><span><i class="legend-candidate"></i>кандидат</span><span><i class="legend-voted"></i>голос учтён</span><span><i class="legend-out"></i>выбыл</span></div>
+        <div id="notice" class="notice" role="status" aria-live="polite"></div>
+        <div id="action-area" class="action-area"></div>
+      </section>
+      <aside class="plan card" aria-label="Распределение голосов">
+        <div class="plan-top"><div><p class="eyebrow">РАСПРЕДЕЛЕНИЕ</p><h2 id="plan-title">Ваша схема</h2></div><span id="assigned-count" class="small-counter">0 / 10</span></div>
+        <p id="plan-description" class="plan-description">Нажмите на номер за столом и выберите кандидата. Или назначьте голоса здесь.</p>
+        <div id="plan-rows" class="plan-rows"></div>
+        <div id="totals" class="totals"></div>
+      </aside>
+    </div>
+
+  </main>
+</body>
+</html>
